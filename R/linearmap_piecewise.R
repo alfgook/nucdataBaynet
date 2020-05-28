@@ -28,6 +28,16 @@
 pwMap <- function(expEn, opts = NULL, ret.mat = TRUE) {
 
   stopifnot(is.list(opts))
+  
+  if(is.matrix(opts$S)){  
+    S <- as(opts$S, "sparseMatrix")
+    return(  if (ret.mat) S else {
+        tmp <- summary(S)
+        data.table(IDX1 = tmp$i, IDX2 = tmp$j, X = tmp$x)
+        }
+      )
+  }
+  
   order <- if (is.null(opts$order)) 1 else opts$order
   inv <- if (is.null(opts$inv)) FALSE else opts$inv
   outsideZero <- if (is.null(opts$outsideZero)) FALSE else opts$outsideZero
