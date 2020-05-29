@@ -144,12 +144,22 @@ LMalgo <- function(fn, jac, pinit, p0, P0, yexp, D, S, X,
       Lref <- Lprop
     }
 
-  }
+  }  
+  
+  tJinvBJ <- forceSymmetric(mult_xt_invCov_x(J, D, S, X, cholZ = cholZ))
+  invP1 <- invP0 + tJinvBJ
+  
+  parCov <- solve(invP1)
+  stdAsyFitErr <- sqrt(diag(J %*% parCov %*% t(J)))
+  
   list(par = pref,
        fn = fref,
        jac = J,
        counts = i,
-       value = Lref)
+       value = Lref,
+       parCovLM = parCov,
+       stdAsyFitErrLM = stdAsyFitErr
+  )
 }
 
 

@@ -98,6 +98,18 @@ createSysCompReacHandler <- function(subentList) {
     resDt
   }
 
+  createSysDtGpObs <- function() {
+    resDt <- mapAssignmentDt[, {
+      list(DIDX = seq_along(VALS[[1]]),
+           ERRTYPE = HNDNAME,
+           GPTYPE = NA_character_,
+           DATA = VALS[[1]],
+           UNC = UNCS[[1]],
+           EN = OPTS[[1]]$ens
+      )
+    }, by="EXPID"]
+    resDt
+  }
 
   getSignature <- function() {
     "reactionMapHandler"
@@ -150,6 +162,7 @@ createSysCompReacHandler <- function(subentList) {
        assignMapToReac = assignMapToReac,
        getMapAssignment = getMapAssignment,
        createSysDt = createSysDt,
+       createSysDtGpObs = createSysDtGpObs,
        # must have properties
        getSignature = getSignature,
        getErrTypes = getErrTypes,
