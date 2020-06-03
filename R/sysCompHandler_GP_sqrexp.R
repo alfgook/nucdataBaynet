@@ -74,6 +74,7 @@ createSysCompGPHandler <- function() {
       diag(covMat) <- diag(covMat) + curNugget^2
       list(IDX1 = rep(IDX, length(IDX)), IDX2 = rep(IDX, each=length(IDX)), X = as.vector(covMat))
     }, by="EXPID"]
+    
     resDt[,EXPID := NULL]
     resDims <- c(nrow(sysDt), nrow(sysDt))
     returnSparseMatrix(resDt, resDims, ret.mat)
@@ -119,6 +120,8 @@ createSysCompGPHandler <- function() {
       } else if (curParname == "len") {
         z <- (-0.5) * (outer(idxEnDt$EN, idxEnDt$EN, `-`))^2
         dCovMat <- curSigma^2 * exp(z/curLen^2) * ((-2)*z)/curLen^3
+      } else if (curParname == "nugget") {
+        z <- Diagonal(length(idxEnDt$EN), 2*curNugget)
       } else {
         dCovMat <- matrix(0, nrow = length(idxEnDt$EN), ncol = length(idxEnDt$EN))
       }
