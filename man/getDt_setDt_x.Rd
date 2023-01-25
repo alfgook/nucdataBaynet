@@ -27,6 +27,9 @@ getDt_UNC(dt, idx = NULL)
 \item{idx}{if \code{NULL}, \code{x} will replace the complete column, otherwise
 only the values associated with the indices in \code{idx} will be changed.}
 }
+\description{
+Convenience Functions to Set and Get Columns in a Datatable
+}
 \note{
 Datatables are modified by reference, i.e. the datatable \code{dt} passed as argument is modified!
 }

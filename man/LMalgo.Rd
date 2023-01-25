@@ -4,9 +4,21 @@
 \alias{LMalgo}
 \title{Levenberg-Marquardt algorithm with prior}
 \usage{
-LMalgo(fn, jac, pinit, p0, P0, yexp, D, S, X, lower = -Inf, upper = Inf,
-  logger = NULL, control = list(maxit = 10, abstol = 0.001, reltol = 0.001,
-  mu = NULL))
+LMalgo(
+  fn,
+  jac,
+  pinit,
+  p0,
+  P0,
+  yexp,
+  D,
+  S,
+  X,
+  lower = -Inf,
+  upper = Inf,
+  logger = NULL,
+  control = list(maxit = 10, abstol = 0.001, reltol = 0.001, mu = NULL)
+)
 }
 \arguments{
 \item{fn}{model function}

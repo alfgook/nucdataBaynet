@@ -4,8 +4,18 @@
 \alias{gradLogLike}
 \title{Calculate Gradient of Log-Likelihood}
 \usage{
-gradLogLike(d, D, S, cholZ = NULL, sysDt, gpDt = NULL, statUncIdx = NULL,
-  sysUncIdx = NULL, gpIdx = NULL, sysCompHandler)
+gradLogLike(
+  d,
+  D,
+  S,
+  cholZ = NULL,
+  sysDt,
+  gpDt = NULL,
+  statUncIdx = NULL,
+  sysUncIdx = NULL,
+  gpIdx = NULL,
+  sysCompHandler
+)
 }
 \arguments{
 \item{D}{TODO}
